@@ -1,0 +1,11 @@
+[Unit]    
+   Description=RPI Display GPIO Brightness Trigger Service   
+   ConditionPathExists=/opt/illumination/service_illumination.sh   
+   
+    [Service]   
+   Type=simple   
+   ExecStart=/opt/illumination/service_illumination.sh   
+   RemainAfterExit=yes   
+   
+    [Install]   
+   WantedBy=multi-user.target
