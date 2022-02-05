@@ -25,7 +25,11 @@ This is how to setup brightness control of RPI Official Touchscreen 7" display o
 ```
 #!/bin/bash
 
-NOW=$(TZ=Europe/London date '+%T %d/%m')
+root /usr/local/bin/sunwait list rise 50.08025934621861N 14.449092236331207E ; /usr/local/bin/sunny.sh light;
+root /usr/local/bin/sunwait list down 50.08025934621861N 14.449092236331207E ; /usr/local/bin/sunny.sh dark;
+
+
+NOW=$(TZ=Europe/Prague date '+%T %d/%m')
 
 if [ "$1" == "reboot" ]; then
   if [ ! -f /var/run/lightordark ];
