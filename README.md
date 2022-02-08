@@ -85,4 +85,4 @@ This is how to setup brightness control of RPI Official Touchscreen 7" display o
    1. `sudo chmod 744 nano /home/pi/brightness_automation.py`   
    1. `sudo chmod 644 /etc/systemd/system/brightness_control.service`   
    2. `sudo systemctl daemon-reload`    
-   3. `sudo systemctl enable illumination.service`   
+   3. `sudo systemctl enable brightness_control.service`   
