@@ -12,7 +12,7 @@ This is how to setup brightness control of RPI Official Touchscreen 7" display o
    [Service]
    Type=idle
    User=root
-   ExecStart=/usr/bin/python3 /home/pi/brightness_automation.py
+   ExecStart=/usr/bin/python3 /opt/brightness-monitor/brightness-automation.py
    Restart=always
    RestartSec=300
       
@@ -25,8 +25,10 @@ This is how to setup brightness control of RPI Official Touchscreen 7" display o
 ` sudo pip3 install rpi-backlight`   
 1. Note: Create this udev rule to update permissions, otherwise you'll have to run Python code, the GUI and CLI as root when changing the power or brightness:   
 `$ echo 'SUBSYSTEM=="backlight",RUN+="/bin/chmod 666 /sys/class/backlight/%k/brightness /sys/class/backlight/%k/bl_power"' | sudo tee -a /etc/udev/rules.d/backlight-permissions.rules`
+1. create folder in opt
+`sudo mkdir /opt/brightness-monitor`
 1. create script
-`sudo nano /home/pi/brightness_automation.py`
+`sudo nano /opt/brightness-monitor/brightness-automation.py`
 1. paste this
    ```
    #!/usr/bin/python3
@@ -82,7 +84,7 @@ This is how to setup brightness control of RPI Official Touchscreen 7" display o
    fi
    ```
 1. Make sure the permissions on the script and the service file are correct. They should be owned by root and the script should be executable.   
-   1. `sudo chmod 744 /home/pi/brightness_automation.py`   
+   1. `sudo chmod 744 /opt/brightness-monitor/brightness-automation.py`   
    1. `sudo chmod 644 /etc/systemd/system/brightness_control.service`   
    2. `sudo systemctl daemon-reload`    
    3. `sudo systemctl enable brightness_control.service`   
